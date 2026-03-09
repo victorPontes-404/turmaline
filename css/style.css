@@ -1,3 +1,21 @@
+/* ============================================================
+   TURMALINE — Design System
+   ============================================================ */
+
+/* Fontes */
+@font-face {
+  font-family: 'Ubuntu';
+  src: url('fonts/Ubuntu-Regular.ttf') format('truetype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Ubuntu';
+  src: url('fonts/Ubuntu-Bold.ttf') format('truetype');
+  font-weight: 700;
+}
+
+/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -5,18 +23,7 @@
   text-decoration: none;
 }
 
-@font-face {
-  font-family: 'Ubuntu';
-  src: url('../fonts/Ubuntu-Regular.ttf') format('truetype');
-  font-weight: 400;
-}
-
-@font-face {
-  font-family: 'Ubuntu';
-  src: url('../fonts/Ubuntu-Bold.ttf') format('truetype');
-  font-weight: 700;
-}
-
+/* Variáveis globais */
 :root {
   --background: #050505;
   --text: #ffffff;
@@ -25,29 +32,27 @@
   --border-color: #303030;
 }
 
+/* Base */
 body {
   background-color: var(--background);
   color: var(--text);
+  font-family: 'Ubuntu', sans-serif;
   line-height: 1.6;
   min-height: 100vh;
-  font-family: 'Ubuntu', sans-serif;
 }
 
-h1,
-h2,
-h3 {
-  font-weight: 700;
+h1, h2, h3 {
+  font-weight: 600;
 }
 
 p {
-  color: #ffffff;
+  color: var(--text);
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 40px;
-}
+
+/* 
+   ----------------------NAVBAR---------------------------
+*/
 
 .navbar {
   width: 60%;
@@ -67,6 +72,10 @@ p {
   margin-left: 10px;
 }
 
+.logo img {
+  height: 40px;
+}
+
 .nav-link a {
   color: var(--primary-color);
   margin-right: 25px;
@@ -77,9 +86,10 @@ p {
   color: var(--secondary-color);
 }
 
-.logo img {
-  height: 40px;
-}
+
+/* 
+   -------------------------LANDING — Seção About-------------------------
+*/
 
 .about {
   display: flex;
@@ -110,7 +120,6 @@ p {
 .about-left p {
   margin-bottom: 20px;
   color: var(--primary-color);
-  transform: translateX(20px);
 }
 
 .about-right {
@@ -128,4 +137,130 @@ p {
 .about-right p {
   font-size: 22px;
   margin-bottom: 15px;
+}
+
+
+/* 
+-------------------------LOGIN-------------------------
+*/
+
+body.login-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-box {
+  background-color: var(--border-color);
+  border-radius: 8px;
+  padding: 30px 28px 40px 28px;
+  width: 380px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.login-logo {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 6px;
+}
+
+.login-logo img {
+  height: 38px;
+}
+
+.login-box h1 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--primary-color);
+  width: 100%;
+  text-align: center;
+  margin-bottom: 2px;
+}
+
+/* Campos do formulário */
+.form-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.form-group label {
+  font-size: 14px;
+  color: var(--text);
+}
+
+.form-group input {
+  background-color: #1a1a1a;
+  border: 1px solid #555;
+  border-radius: 4px;
+  padding: 10px;
+  color: var(--text);
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 14px;
+  outline: none;
+  width: 100%;
+}
+
+.form-group input:focus {
+  border-color: var(--primary-color);
+}
+
+.form-group input::placeholder {
+  color: #666;
+}
+
+/* Links */
+.forgot {
+  font-size: 12px;
+  color: var(--primary-color);
+  margin-top: -8px;
+  margin-left: 2px;
+}
+
+.forgot:hover {
+  color: var(--secondary-color);
+}
+
+.register-link {
+  font-size: 13px;
+  color: #aaa;
+  width: 100%;
+  text-align: center;
+  margin-top: 4px;
+}
+
+.register-link a {
+  color: var(--primary-color);
+}
+
+.register-link a:hover {
+  color: var(--secondary-color);
+}
+
+/* Botão de login */
+.btn-login {
+  width: 60%;
+  margin: 6px auto 0 auto;
+  display: block;
+  padding: 10px;
+  background-color: var(--primary-color);
+  color: #050505;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.btn-login:hover {
+  background-color: var(--secondary-color);
+  color: var(--text);
 }

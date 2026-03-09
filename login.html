@@ -5,153 +5,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>turmaline — login</title>
-  <style>
-    @font-face {
-      font-family: 'Ubuntu';
-      src: url('fonts/Ubuntu-Regular.ttf') format('truetype');
-      font-weight: 400;
-    }
-
-    @font-face {
-      font-family: 'Ubuntu';
-      src: url('fonts/Ubuntu-Bold.ttf') format('truetype');
-      font-weight: 700;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      text-decoration: none;
-    }
-
-    :root {
-      --background: #050505;
-      --text: #ffffff;
-      --primary-color: #00e5ff;
-      --secondary-color: #0094ff;
-      --border-color: #303030;
-    }
-
-    body {
-      background-color: var(--background);
-      color: var(--text);
-      font-family: 'Ubuntu', sans-serif;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .login-box {
-      background-color: var(--border-color);
-      border-radius: 8px;
-      padding: 30px 28px 40px 28px;
-      width: 380px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 14px;
-    }
-
-    .login-logo {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      margin-bottom: 6px;
-    }
-
-    .login-logo img {
-      height: 38px;
-    }
-
-    .login-box h1 {
-      font-size: 22px;
-      font-weight: 700;
-      color: var(--primary-color);
-      width: 100%;
-      text-align: center;
-      margin-bottom: 2px;
-    }
-
-    .form-group {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .form-group label {
-      font-size: 14px;
-      color: var(--text);
-    }
-
-    .form-group input {
-      background-color: #1a1a1a;
-      border: 1px solid #555;
-      border-radius: 4px;
-      padding: 10px 10px;
-      color: var(--text);
-      font-family: 'Ubuntu', sans-serif;
-      font-size: 14px;
-      outline: none;
-      width: 100%;
-    }
-
-    .form-group input:focus {
-      border-color: var(--primary-color);
-    }
-
-    .form-group input::placeholder {
-      color: #666;
-    }
-
-    .forgot {
-      font-size: 12px;
-      color: var(--primary-color);
-      margin-top: -8px;
-      margin-left: 2px;
-    }
-
-    .btn-login {
-      width: 60%;
-      margin: 6px auto 0 auto;
-      display: block;
-      padding: 10px;
-      background-color: var(--primary-color);
-      color: #050505;
-      font-family: 'Ubuntu', sans-serif;
-      font-size: 15px;
-      font-weight: 700;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
-    .btn-login:hover {
-      background-color: var(--secondary-color);
-      color: var(--text);
-    }
-
-    .register-link {
-      font-size: 13px;
-      color: #aaa;
-      width: 100%;
-      text-align: center;
-      margin-top: 4px;
-    }
-
-    .register-link a {
-      color: var(--primary-color);
-    }
-  </style>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
+<body class="login-page">
   <div class="login-box">
+
     <div class="login-logo">
-      <img src="assets/logo.webp" alt="logo">
+      <img src="assets/logo.webp" alt="Logo Turmaline">
     </div>
 
     <h1>Login</h1>
@@ -171,6 +32,7 @@
     <button class="btn-login">Login</button>
 
     <p class="register-link">Don't have an account? <a href="#">Register here</a></p>
+
   </div>
 </body>
 
