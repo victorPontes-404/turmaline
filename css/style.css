@@ -1,136 +1,131 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-decoration: none;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
 }
 
-
-/*
-variaveis das cores
-*/
-
-:root{
-    --background: #050505;
-    --text: #ffffff;
-    --primary-color: #00e5ff;
-    --secondary-color: #0094ff;
-    --border-color: #303030;
-
-
+@font-face {
+  font-family: 'Ubuntu';
+  src: url('../fonts/Ubuntu-Regular.ttf') format('truetype');
+  font-weight: 400;
 }
 
-/*
-organização geral inicial
-*/
+@font-face {
+  font-family: 'Ubuntu';
+  src: url('../fonts/Ubuntu-Bold.ttf') format('truetype');
+  font-weight: 700;
+}
+
+:root {
+  --background: #050505;
+  --text: #ffffff;
+  --primary-color: #00e5ff;
+  --secondary-color: #0094ff;
+  --border-color: #303030;
+}
 
 body {
   background-color: var(--background);
   color: var(--text);
-  font-family: 'Ubuntu', sans-serif;
   line-height: 1.6;
   min-height: 100vh;
+  font-family: 'Ubuntu', sans-serif;
 }
 
-h1, h2, h3 {
-  font-weight: 600;
+h1,
+h2,
+h3 {
+  font-weight: 700;
 }
 
 p {
   color: #ffffff;
 }
 
-/*
-organização das classes
-*/
-.navbar {
-    width: 60%;
-    margin: auto;
-    padding: 20px 0;
-    background-color: var(--border-color);
-    border-radius: 20px;
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
 }
 
-.navbar-content{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    
+.navbar {
+  width: 60%;
+  margin: auto;
+  padding: 20px 0;
+  background-color: var(--border-color);
+  border-radius: 20px;
 }
-.navbar .logo{
-    margin-left: 10px;
+
+.navbar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar .logo {
+  margin-left: 10px;
 }
 
 .nav-link a {
-    color: var(--primary-color);
-    margin-right: 25px;
-    font-weight: 500;
+  color: var(--primary-color);
+  margin-right: 25px;
+  font-weight: 500;
 }
 
-.nav-link a:hover{
-    color:var(--secondary-color)
+.nav-link a:hover {
+  color: var(--secondary-color);
 }
 
 .logo img {
   height: 40px;
-
 }
 
-/*
-sobre inicial
-*/
 .about {
-    display: flex;
-    justify-content: center;
-    padding: 60px 0;
+  display: flex;
+  justify-content: center;
+  padding: 60px 0;
 }
 
 .about-content {
-    display: flex;
-    gap: 60px;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  gap: 60px;
+  align-items: center;
+  justify-content: center;
 }
 
-/* ------------------------------------------ */
-
 .about-left {
-    flex: 1;
-    color: var(--primary-color);
-    text-align: left;
-    font-size: 1rem;
-    
+  flex: 1;
+  color: var(--primary-color);
+  text-align: left;
+  font-size: 1rem;
 }
 
 .about-left h2 {
-    margin-bottom: 20px;
-    color: var(--primary-color);
-    font-size: 35px;
-
+  margin-bottom: 20px;
+  color: var(--primary-color);
+  font-size: 35px;
 }
 
 .about-left p {
-    margin-bottom: 20px;
-    color: var(--primary-color);
-    
-    
+  margin-bottom: 20px;
+  color: var(--primary-color);
+  transform: translateX(20px);
 }
 
-/* ------------------------------------------ */
-
 .about-right {
-    flex: 2;
-    background-color: var(--border-color);
-    padding: 30px;
-    border-radius: 15px;
+  flex: 2;
+  background-color: var(--border-color);
+  padding: 30px;
+  border-radius: 15px;
 }
 
 .about-right h1 {
-    text-align: center;
-    margin-bottom: 30px;
+  text-align: center;
+  margin-bottom: 30px;
 }
 
 .about-right p {
-    font-size: 22px;
-    margin-bottom: 15px;
+  font-size: 22px;
+  margin-bottom: 15px;
 }
