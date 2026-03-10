@@ -243,6 +243,28 @@ body.login-page {
   color: var(--secondary-color);
 }
 
+/*
+-------------------------FOCO (acessibilidade por teclado)-------------------------
+*/
+
+/* Remove o outline padrão feio do browser em todos os interativos */
+:focus {
+  outline: none;
+}
+
+/* Aplica um outline consistente com o design system */
+:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* O input já tem border-color no focus, então só reforça */
+.form-group input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(0, 229, 255, 0.15);
+}
+
 /* Botão de login */
 .btn-login {
   width: 60%;
