@@ -101,13 +101,13 @@
 }
 
 .feature-card h3 {
-  font-size: 17px;
+  font-size: 22px;
   font-weight: 700;
   color: var(--text);
 }
 
 .feature-card p {
-  font-size: 14px;
-  color: #aaa;
+  font-size: 18px;
+  color: #fff;
   line-height: 1.6;
 }
