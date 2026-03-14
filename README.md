@@ -1,6 +1,6 @@
 # turmaline
 
-Integrantes:
+Integrantes: 
 Andrei
 Burno henrique
 Diogo paes
