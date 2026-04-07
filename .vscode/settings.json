@@ -1,4 +1,8 @@
 {
   "css.lint.unknownAtRules": "ignore",
-  "tailwindCSS.emmetCompletions": true
+  "tailwindCSS.emmetCompletions": true,
+  "files.exclude": {
+    "**/__pycache__": true,
+    "**/__init__.py": true
+  }
 }
