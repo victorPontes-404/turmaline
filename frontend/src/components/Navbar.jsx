@@ -25,7 +25,7 @@ export default function Navbar() {
           </li>
           <li>
             <Link 
-              to="/cadastro" 
+              to="/register" 
               className="text-[#00e5ff] font-medium hover:text-[#0094ff] transition-colors"
             >
               Cadastro
