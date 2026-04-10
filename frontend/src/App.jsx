@@ -6,6 +6,7 @@ import Landing from './pages/Landing';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import ProjectView from './pages/ProjectView';
+import Register from './pages/Register';
 
 export default function App() {
   return (
@@ -24,7 +25,9 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/dashboard/projetos/:id" element={<ProjectView />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     </Router>
   );
 }
+
