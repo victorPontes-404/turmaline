@@ -3,10 +3,17 @@ import { useNavigate } from 'react-router-dom';
 import { FiFolderPlus, FiLayout, FiLogOut } from 'react-icons/fi';
 import ProjectCard from '../components/ProjectCard';
 import CreateProjectModal from '../components/CreateProjectModal';
+import { useAuth } from '../context/AuthContext';
 
 export default function Dashboard() {
   const navigate = useNavigate(); // Hook para navegar entre rotas
+  const { logout, user } = useAuth();
   const [isModalOpen, setIsModalOpen] = useState(false); // Controla a visibilidade do modal de novo projeto
+
+  const handleLogout = () => {
+    logout();
+    navigate('/');
+  };
 
   // Estado simulado (mock) contento a lista inicial de projetos
   const [projects] = useState([
@@ -22,7 +29,7 @@ export default function Dashboard() {
         <div className="flex flex-col gap-6 w-full items-center">
           {/* Avatar principal/Logo indicando o ambiente */}
           <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center text-black font-bold cursor-pointer hover:bg-gray-200 transition-colors">
-            Tu
+            {user?.name?.substring(0, 2).toUpperCase() || 'Tu'}
           </div>
           <div className="h-px w-8 bg-gray-800 rounded-full" />
           <button className="text-white bg-[#27272a] p-2.5 rounded-lg transition-colors border border-gray-700 shadow-md" title="Dashboard">
@@ -32,7 +39,7 @@ export default function Dashboard() {
 
         {/* Botão para retornar ao Login */}
         <button
-          onClick={() => navigate('/')}
+          onClick={handleLogout}
           className="text-gray-500 hover:text-red-400 p-2.5 transition-colors"
           title="Logout"
         >
@@ -45,7 +52,9 @@ export default function Dashboard() {
         {/* Cabeçalho explicativo e botão de ação global */}
         <header className="flex justify-between items-center mb-12">
           <div>
-            <h1 className="text-3xl font-semibold text-white tracking-tight">Projetos</h1>
+            <h1 className="text-3xl font-semibold text-white tracking-tight">
+              Projetos de {user?.name || 'Carregando...'}
+            </h1>
             <p className="text-gray-500 text-sm mt-1 mb-8">Gerencie seus fluxos de trabalho e documentos baseados em projetos.</p>
           </div>
           {/* Aciona o state para mostrar o Modal em tela cheia */}

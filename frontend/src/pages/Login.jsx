@@ -1,17 +1,30 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+import { loginUser } from '../api/auth';
+import { useAuth } from '../context/AuthContext';
 
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { login } = useAuth();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    // Aqui você pode adicionar a lógica de autenticação
-    console.log('Login com:', { email, password });
-    // Redirecionar após login bem-sucedido
-    // navigate('/dashboard');
+    setError('');
+    setLoading(true);
+
+    try {
+      const data = await loginUser({ email, password });
+      login(data.access_token);
+      navigate('/dashboard');
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -32,6 +45,13 @@ export default function Login() {
         <h1 className="text-2xl font-bold text-[#00e5ff] w-full text-center mb-1">
           Login
         </h1>
+
+        {/* Error Message */}
+        {error && (
+          <p className="text-sm text-red-400 text-center -mb-1 bg-red-400/10 border border-red-400/30 rounded px-3 py-2">
+            {error}
+          </p>
+        )}
 
         {/* Form */}
         <form onSubmit={handleLogin} className="flex flex-col gap-[14px]">
@@ -79,16 +99,20 @@ export default function Login() {
           {/* Login Button */}
           <button
             type="submit"
-            className="w-3/5 mx-auto block py-2.5 px-0 bg-[#00e5ff] text-[#050505] font-bold text-sm rounded hover:bg-[#0094ff] hover:text-white transition-all duration-200 mt-1.5"
+            disabled={loading}
+            className="w-3/5 mx-auto block py-2.5 px-0 bg-[#00e5ff] text-[#050505] font-bold text-sm rounded hover:bg-[#0094ff] hover:text-white transition-all duration-200 mt-1.5 disabled:opacity-60 disabled:cursor-not-allowed"
           >
-            Login
+            {loading ? 'Entrando...' : 'Login'}
           </button>
 
         </form>
 
         {/* Register Link */}
         <p className="text-sm text-gray-400 w-full text-center mt-1">
-          Don't have an account? <a href="#" className="text-[#00e5ff] hover:text-[#0094ff] transition-colors">Register here</a>
+          Don't have an account?{' '}
+          <Link to="/register" className="text-[#00e5ff] hover:text-[#0094ff] transition-colors">
+            Register here
+          </Link>
         </p>
 
       </div>

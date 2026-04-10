@@ -19,7 +19,9 @@ def create_user(db: Session, user_data: UserCreate):
     db.add(new_user)
     db.commit()
     db.refresh(new_user)
-    return new_user
+    
+    token = create_access_token(data={"sub": new_user.email})
+    return {"access_token": token, "token_type": "bearer", "user": new_user}
 
 #autentica o usuario
 def authenticate_user(db: Session, email: str, password: str):
@@ -31,4 +33,4 @@ def authenticate_user(db: Session, email: str, password: str):
         return None
     
     token = create_access_token(data={"sub": user.email})
-    return {"access_token": token, "token_type": "bearer"}
+    return {"access_token": token, "token_type": "bearer", "user": user}

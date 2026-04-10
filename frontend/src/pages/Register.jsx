@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { registerUser } from '../api/auth';
+import { useAuth } from '../context/AuthContext';
 
 export default function Register() {
   const [formData, setFormData] = useState({
@@ -9,24 +11,39 @@ export default function Register() {
     confirmPassword: '',
   });
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
     setError('');
 
     if (formData.password !== formData.confirmPassword) {
-      setError('Passwords do not match.');
+      setError('As senhas não coincidem.');
       return;
     }
 
-    // Aqui você pode adicionar a lógica de cadastro (chamada à API)
-    console.log('Cadastro com:', formData);
-    // navigate('/login');
+    setLoading(true);
+    try {
+      const data = await registerUser({
+        name: formData.name,
+        email: formData.email,
+        password: formData.password,
+      });
+      
+      // Auto-login: usa o token retornado pelo cadastro
+      login(data.access_token);
+      navigate('/dashboard');
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -123,9 +140,10 @@ export default function Register() {
           {/* Register Button */}
           <button
             type="submit"
-            className="w-3/5 mx-auto block py-2.5 px-0 bg-[#00e5ff] text-[#050505] font-bold text-sm rounded hover:bg-[#0094ff] hover:text-white transition-all duration-200 mt-1.5"
+            disabled={loading}
+            className="w-3/5 mx-auto block py-2.5 px-0 bg-[#00e5ff] text-[#050505] font-bold text-sm rounded hover:bg-[#0094ff] hover:text-white transition-all duration-200 mt-1.5 disabled:opacity-60 disabled:cursor-not-allowed"
           >
-            Register
+            {loading ? 'Criando conta...' : 'Register'}
           </button>
 
         </form>
